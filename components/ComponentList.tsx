@@ -76,7 +76,7 @@ const ComponentList = ({ setViewComponentInfo, updateInfo }: ComponentProps) => 
                 (
                   <div className='z-10 min-h-full col-span-full flex flex-col items-center justify-center px-10 text-gray-400'>
                     <IoCodeWorkingOutline className='text-8xl'/>
-                    <p className='text-center'>Apologies, we don't have a component for this yet, but we're working on it!</p>
+                    <p className='text-center'>Apologies, we don&apos;t have a component for this yet, but we&apos;re working on it!</p>
                   </div>
                 )}
             </div>
