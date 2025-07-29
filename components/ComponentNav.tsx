@@ -116,10 +116,10 @@ const ComponentNav = ({ setComponents, selectedComponents, showFilters }: Compon
         damping: 20,
         stiffness: 300
       }}
-      className='h-auto w-9/10 p-3 rounded-xl shadow-md bg-white absolute z-30 mt-20 right-0 flex flex-col gap-2'
+      className='h-auto w-9/10 p-3 rounded-xl shadow-md bg-white absolute z-30 mt-20 md:mt-0 md:w-3/5 right-0 flex flex-col gap-2 before:h-1/2 before:w-full before:bg-white before:absolute before:left-0 before:-z-1'
     >
-      <span className='h-8 w-8 bg-white rotate-45 absolute -top-2 right-3 -z-50 rounded-md'></span>
-      <h3 className='w-full text-base font-semibold text-gray-600'>Category</h3>
+      <span className='h-8 w-8 bg-white rotate-45 absolute -top-2 right-3 md:top-3 md:right-0 md:-left-3 -z-[999] rounded-md shadow-lg'></span>
+      <h3 className='w-full text-base font-semibold text-gray-600 bg-white'>Category</h3>
       <div className='h-auto w-full flex flex-wrap gap-2'>
         {componentFilter.map((val, i) => (
           <FilterButton 

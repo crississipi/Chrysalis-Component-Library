@@ -3,9 +3,7 @@ export interface HeroCardProps {
 }
 
 export interface SelectedFilterProps {
-    title: string;
     category: string;
-    setSelected: (selected: string) => void;
 }
 
 export interface FilterButtonProps {
@@ -34,4 +32,13 @@ export interface UpdateInfoProps {
 export interface SetInfoProps {
     displayName: string;
     displayTags: string[];
+}
+
+export interface HeaderProps {
+    viewList: (list: boolean) => void;
+    list: boolean;
+}
+
+export interface CodeProps {
+    isDisplayed: boolean;
 }

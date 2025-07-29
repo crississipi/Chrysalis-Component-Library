@@ -7,7 +7,7 @@ const ComponentPreview = () => {
     <div className='w-full aspect-[3/2] rounded-xl rounded-tr-none bg-white overflow-hidden p-2'>
       <div className='h-full w-full border border-gray-200 relative rounded-md overflow-hidden flex items-center justify-center'>
         <div className='w-full h-full grid grid-cols-10 absolute top-1/2 left-1/2 -translate-1/2'>
-          {Array.from({ length: 75 }).map((_,i) => (
+          {Array.from({ length: 125 }).map((_,i) => (
             <span key={i} className={`col-span-1 ${i < 10 && '-mt-2'} aspect-square border-[0.5px] border-gray-200`}></span>
           ))}
         </div>

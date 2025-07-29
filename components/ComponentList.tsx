@@ -8,6 +8,7 @@ import ComponentNav from './ComponentNav'
 import { AnimatePresence } from 'framer-motion';
 import { ComponentListProps, UpdateInfoProps } from '@/types';
 import { IoCodeWorkingOutline } from 'react-icons/io5';
+import SelectedFilter from './SelectedFilter';
 
 type ComponentProps = ComponentListProps & UpdateInfoProps;
 
@@ -31,7 +32,7 @@ const ComponentList = ({ setViewComponentInfo, updateInfo }: ComponentProps) => 
     },
     {
       name: "Neo Modern Footer",
-      tags: ['footer', 'neo Modern', 'modern']
+      tags: ['footer', 'neo_modern', 'modern']
     },
     {
       name: "Side Slide Navigation Bar",
@@ -53,14 +54,25 @@ const ComponentList = ({ setViewComponentInfo, updateInfo }: ComponentProps) => 
         <AnimatePresence>
           { filters && <ComponentNav showFilters={showFilters} setComponents={setComponents} selectedComponents={selectedComponents} />}
         </AnimatePresence>
-        <div className='w-full flex gap-2'>
+        <div className='w-full flex flex-wrap gap-2 items-center'>
             <Search />
-            <button type="button" className='p-1 px-4 bg-white rounded-md shadow-sm text-2xl hover:shadow-md focus:shadow-md focus:shadow-gray-300 group ease-in-out duration-200' onClick={toggleShowFilters}>
+            <button type="button" className='p-4 bg-white rounded-md shadow-sm text-2xl hover:shadow-md focus:shadow-md focus:shadow-gray-300 group ease-in-out duration-200' onClick={toggleShowFilters}>
                 <LuListFilter className='group-focus:scale-120 ease-in-out duration-200'/>
             </button>
+            <div className='w-full md:w-auto flex gap-2 px-3'>
+              {selectedComponents.map((val, i) => (
+                <SelectedFilter 
+                  key={i} 
+                  category={val} 
+                  selectedComponents={selectedComponents} 
+                  setComponents={setComponents} 
+                  showFilters={showFilters}
+                />
+              ))}
+            </div>
         </div>
         <div className='mt-3 w-full h-full flex flex-col overflow-x-hidden'>
-            <div className='w-full h-full min-h-[70vh] grid grid-cols-2 overflow-x-hidden pt-2 pb-5 gap-3'>
+            <div className='w-full h-full min-h-[70vh] grid grid-cols-2 md:grid-cols-5 overflow-x-hidden pt-2 pb-5 gap-3'>
                 {filteredCategory.length !== 0 ? 
                 filteredCategory.map((val, i) => (
                   <ComponentInfo 

@@ -3,7 +3,7 @@ import { HiOutlineSearch } from 'react-icons/hi'
 
 const Search = () => {
   return (
-    <div className='pl-5 py-2 pr-3 rounded-md shadow-md bg-white w-6/7 flex' >
+    <div className='pl-5 py-2 pr-3 rounded-md shadow-md bg-white w-5/6 md:w-1/3 flex' >
         <input 
             type="text" 
             placeholder='Search for components'

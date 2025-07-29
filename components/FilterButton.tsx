@@ -12,9 +12,6 @@ const FilterButton = ({ name, type, setComponents, showFilters, selectedComponen
     } else {
       setComponents(prevItems => [...prevItems, type]);
     }
-
-    
-
     showFilters(false);
   }
 

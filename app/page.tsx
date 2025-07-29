@@ -1,12 +1,13 @@
 "use client";
 
-import { ComponentList, ComponentPage, Header } from "@/components";
+import { AddNewComponent, ComponentList, ComponentPage, Header } from "@/components";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import { SetInfoProps } from "@/types";
 
 export default function Home() {
+  const [list, viewList] = useState(true);
   const [viewComponentInfo, setViewComponentInfo] = useState(false);
   const [info, setInfo] = useState<SetInfoProps>({
     displayName: '...',
@@ -38,14 +39,20 @@ export default function Home() {
           </motion.span>
         ))}
       </div>
-      <Header />
-      <div className="h-full w-full flex flex-col overflow-x-hidden">
-        {!viewComponentInfo && <ComponentList setViewComponentInfo={setViewComponentInfo} updateInfo={updateInfo}/>}
-        {viewComponentInfo && <ComponentPage setViewComponentInfo={setViewComponentInfo} displayName={info.displayName} displayTags={info.displayTags} tags={[]}/>}
-      </div>
-      <footer className="h-20 w-full bg-black text-white text-sm z-10 flex items-center gap-3 px-3">
-        <Image src='/c-logo.png' alt='logo icon' height={100} width={100} className='h-14 w-min object-contain object-center aspect-square bg-white rounded-full'/>
-        <p><b>Chrysalis</b> is an Open-Source platform where developers can share and use unique components to their system.</p>
+      <Header viewList={viewList} list={list}/>
+      {list ? (
+        <div className="h-full w-full flex flex-col overflow-x-hidden">
+          {!viewComponentInfo && <ComponentList setViewComponentInfo={setViewComponentInfo} updateInfo={updateInfo}/>}
+          {viewComponentInfo && <ComponentPage setViewComponentInfo={setViewComponentInfo} displayName={info.displayName} displayTags={info.displayTags} tags={[]}/>}
+        </div>
+      ) : (
+        <AddNewComponent />
+      )}
+      <footer className="h-16 md:h-14 w-full bg-black text-white text-sm z-10 flex items-center gap-3 ">
+        <span className="h-full aspect-square bg-white flex items-center justify-center">
+          <Image src='/logo.png' alt='logo icon' height={100} width={100} className='h-10 w-full object-contain object-center'/>
+        </span>
+        <p className="leading-4"><b>Chrysalis</b> is an Open-Source platform where developers can share and use unique components to their system.</p>
       </footer>
     </main>
   );  

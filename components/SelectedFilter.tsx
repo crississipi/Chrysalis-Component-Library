@@ -1,25 +1,40 @@
-import { SelectedFilterProps } from '@/types'
-import React from 'react'
+import { ComponentNavProps, SelectedFilterProps } from '@/types'
+import React, { useEffect, useState } from 'react'
 import { TfiClose } from 'react-icons/tfi'
 
-const SelectedFilter = ({ title, category, setSelected }: SelectedFilterProps) => {
+type FilterProps = SelectedFilterProps & ComponentNavProps;
+const SelectedFilter = ({ category, selectedComponents, setComponents }: FilterProps) => {
+  const [selected, setSelected] = useState(false);
+  const isActive = selectedComponents.includes(category);
   const closeSelected = () => {
-    setSelected('');
+    setSelected(false);
+    if (isActive) {
+      setComponents(prevItems => prevItems.filter(item => item !== category));
+    } else {
+      setComponents(prevItems => [...prevItems, category]);
+    }
   }
+  useEffect(() => {
+    setSelected(true);
+  }, [category]);
+
   return (
-    <div className='w-max flex flex-col gap-1'>
-        <h3 className='text-gray-500 text-xs ml-7'>{title}</h3>
-        <div className='flex gap-1.5'>
+    <>
+      { selected && (
+        <div className='w-max flex flex-col gap-1'>
+          <span className='flex gap-3 bg-gray-400 text-white text-sm rounded-md p-3 font-medium capitalize'>
             <button 
-                type="button"
-                className='text-gray-400 text-lg focus:text-rose-500 ease-in-out duration-200'
-                onClick={closeSelected}
+              type="button"
+              className='text-white text-lg focus:text-rose-500 ease-in-out duration-200'
+              onClick={closeSelected}
             >
-                <TfiClose />
+              <TfiClose />
             </button>
-            <span className='bg-gray-200 text-gray-600 text-sm rounded-md py-2 px-3 font-medium'>{category}</span>
-        </div>
-    </div>
+              {category}
+            </span>
+      </div>
+      )}
+    </>
   )
 }
 
