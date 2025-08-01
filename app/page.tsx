@@ -46,7 +46,7 @@ export default function Home() {
           {viewComponentInfo && <ComponentPage setViewComponentInfo={setViewComponentInfo} displayName={info.displayName} displayTags={info.displayTags} tags={[]}/>}
         </div>
       ) : (
-        <AddNewComponent />
+        <AddNewComponent viewList={viewList} list={list}/>
       )}
       <footer className="h-16 md:h-14 w-full bg-black text-white text-sm z-10 flex items-center gap-3 ">
         <span className="h-full aspect-square bg-white flex items-center justify-center">

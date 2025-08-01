@@ -42,3 +42,7 @@ export interface HeaderProps {
 export interface CodeProps {
     isDisplayed: boolean;
 }
+
+export interface ModifyComponentProps {
+    setModify: (list: boolean) => void;
+}

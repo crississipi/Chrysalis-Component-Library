@@ -23,7 +23,7 @@ const LanguageButton = ({ num }: HeroCardProps) => {
         className={`h-auto w-11 text-3xl flex flex-col gap-2 relative items-center justify-center ease-in-out duration-300`}
         onClick={() => isSelected(!selected)}
     >
-        <span className={`bg-white rounded-sm h-10 w-10 relative flex items-center justify-center ${selected && 'top-7'} ease-in-out duration-300`}>
+        <span className={`bg-white rounded-sm ring-2 h-10 w-10 relative flex items-center justify-center ${selected ? 'top-7 ring-emerald-400' : 'ring-gray-200'}   ease-in-out duration-300`}>
             {language[num]}
         </span>
         {selected && <span className={`rounded-md text-2xl font-semibold text-white p-2 pt-5 pb-0.5 ${selected && 'bg-emerald-600'} ease-in-out duration-300`}>

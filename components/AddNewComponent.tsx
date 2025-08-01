@@ -1,10 +1,13 @@
+"use client";
+
 import React, { useRef, useState } from 'react'
 import { HiOutlinePlus, HiOutlineUpload } from 'react-icons/hi'
 import { HiOutlineChevronLeft } from 'react-icons/hi2'
 import ModifyComponent from './ModifyComponent';
 import CreateComponent from './CreateComponent';
+import { HeaderProps } from '@/types';
 
-const AddNewComponent = () => {
+const AddNewComponent = ({ viewList }: HeaderProps) => {
   const uploadComponent = useRef<HTMLInputElement | null>(null);
   const [modifyComponent, setModify] = useState(false);
   const [createComponent, setCreate] = useState(false);
@@ -22,8 +25,9 @@ const AddNewComponent = () => {
         <div className='h-[85vh] w-full flex flex-col items-center justify-center z-10 overflow-x-hidden p-5'>
             <span className='md:col-span-full w-full flex flex-wrap items-center relative'>
                 <button 
-                type="button"
-                        className='h-10 w-10 rounded-sm ring-1 ring-transparent flex items-center justify-center text-3xl hover:ring-gray-300 focus:ring-gray-300 focus:scale-110 ease-in-out duration-200'
+                  type="button"
+                  className='h-10 w-10 rounded-sm ring-1 ring-transparent flex items-center justify-center text-3xl hover:ring-gray-300 focus:ring-gray-300 focus:scale-110 ease-in-out duration-200'
+                  onClick={() => viewList(true)}
                 >
                 <HiOutlineChevronLeft />
                 </button>
@@ -58,7 +62,7 @@ const AddNewComponent = () => {
             </div>
         </div>
       )}
-      { modifyComponent && (<ModifyComponent />) }
+      { modifyComponent && (<ModifyComponent setModify={setModify}/>) }
       { createComponent && (<CreateComponent />) }
     </>
   )
